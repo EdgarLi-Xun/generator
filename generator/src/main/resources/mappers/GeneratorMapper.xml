@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.edgarli.generator.dao.GeneratorMapper">
+    <select id="queryPage" resultType="com.edgarli.generator.entity.vo.TableInfo">
+        select table_name, create_time, engine, table_collation coding, table_comment remark
+        from information_schema.tables
+        where table_schema = (select database())
+        <if test='name!="" and name!=null'>
+            and table_name like #{name}
+        </if>
+        order by create_time desc
+    </select>
+    <select id="getColums" resultType="com.edgarli.generator.entity.vo.ColumnInfo">
+        select column_name, is_nullable, data_type as column_Type, column_comment, column_key, extra
+        from information_schema.columns
+        where table_name = #{name}
+          and table_schema = (select database())
+        order by ordinal_position
+    </select>
+    <select id="haveGenerator" resultType="java.lang.String">SELECT table_name
+                                                             FROM information_schema.TABLES
+                                                             WHERE table_name = 't_generator';</select>
+</mapper>
