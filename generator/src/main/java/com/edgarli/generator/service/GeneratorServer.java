@@ -27,6 +27,8 @@ public interface GeneratorServer extends IService<Generator> {
      */
     IPage<TableInfo> queryPage(String name, long start, long limit);
 
+    TableInfo getByName(String name);
+
     /**
      * 根据表名获取当前表中所有的列数据
      *

@@ -6,9 +6,15 @@
         from information_schema.tables
         where table_schema = (select database())
         <if test='name!="" and name!=null'>
-            and table_name like #{name}
+            and table_name like CONCAT('%', #{name},'%')
         </if>
         order by create_time desc
+    </select>
+    <select id="getByName" resultType="com.edgarli.generator.entity.vo.TableInfo">
+        select table_name, create_time, engine, table_collation coding, table_comment remark
+        from information_schema.tables
+        where table_schema = (select database())
+          and table_name = #{name}
     </select>
     <select id="getColums" resultType="com.edgarli.generator.entity.vo.ColumnInfo">
         select column_name, is_nullable, data_type as column_Type, column_comment, column_key, extra
@@ -17,7 +23,9 @@
           and table_schema = (select database())
         order by ordinal_position
     </select>
-    <select id="haveGenerator" resultType="java.lang.String">SELECT table_name
-                                                             FROM information_schema.TABLES
-                                                             WHERE table_name = 't_generator';</select>
+    <select id="haveGenerator" resultType="java.lang.String">
+        SELECT table_name
+        FROM information_schema.TABLES
+        WHERE table_name = 't_generator'
+    </select>
 </mapper>

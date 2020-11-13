@@ -2,12 +2,17 @@ package ${package}.service.impl;
 
 import ${package}.entity.${className};
 import ${package}.service.${className}Service;
-import ${package}.mapper.${className}Mapper;
+import ${package}.dao.${className}Mapper;
 import org.springframework.stereotype.Service;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
 * @author ${author}
 * @date ${date}
+* ${remark}管理
 */
 @Service
 public class ${className}ServiceImpl extends ServiceImpl<${className}Mapper, ${className}> implements ${className}Service {
@@ -18,25 +23,13 @@ public class ${className}ServiceImpl extends ServiceImpl<${className}Mapper, ${c
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public void save(${className} ${changeClassName}) {
-        <#if columns??>
-            <#list columns as column>
-                <#if column.columnKey = 'PRI'>
-                    if (StringUtils.isEmpty(hyff.getcolumn())) {
-                    ${changeClassName}Mapper.insert(${changeClassName});
-                    } else {
-                    ${changeClassName}Mapper.updateById(${changeClassName});
-                    }
-                </#if>
-            </#list>
-        </#if>
-
+    public void saveOrUpdates(${className} ${changeClassName}) {
 
     }
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public void deleteById(String id) {
+    public void delete(String id) {
         ${changeClassName}Mapper.deleteById(id);
     }
     @Override
