@@ -9,6 +9,6 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 * @date ${date}
 */
 @Repository
-public interface ${className}Dto extends BaseMapper<${className}> {
+public interface ${className}Mapper extends BaseMapper<${className}> {
 
 }

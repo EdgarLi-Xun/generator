@@ -6,7 +6,7 @@
         from information_schema.tables
         where table_schema = (select database())
         <if test='name!="" and name!=null'>
-            and table_name like #{name}
+            and table_name like CONCAT('%', #{name},'%')
         </if>
         order by create_time desc
     </select>
@@ -17,7 +17,9 @@
           and table_schema = (select database())
         order by ordinal_position
     </select>
-    <select id="haveGenerator" resultType="java.lang.String">SELECT table_name
-                                                             FROM information_schema.TABLES
-                                                             WHERE table_name = 't_generator';</select>
+    <select id="haveGenerator" resultType="java.lang.String">
+        SELECT table_name
+        FROM information_schema.TABLES
+        WHERE table_name = 't_generator'
+    </select>
 </mapper>

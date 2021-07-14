@@ -44,7 +44,7 @@ public class GenUtil {
     private static List<String> getAdminTemplateNames() {
         List<String> templateNames = new ArrayList<>();
         templateNames.add("Entity");
-        templateNames.add("Dto");
+        templateNames.add("Mapper");
         templateNames.add("Service");
         templateNames.add("ServiceImpl");
         templateNames.add("Controller");
@@ -233,8 +233,8 @@ public class GenUtil {
             return packagePath + "service" + File.separator + "impl" + File.separator + className + "ServiceImpl.java";
         }
 
-        if ("Dto".equals(templateName)) {
-            return packagePath + "dto" + File.separator + className + "Dto.java";
+        if ("Mapper".equals(templateName)) {
+            return packagePath + "dao" + File.separator + className + "Mapper.java";
         }
 
         return null;

@@ -25,6 +25,6 @@ public interface ${className}Service  extends IService<${className}>{
     * 根据ID删除
     * @param id
     */
-    void delete(String id));
+    void delete(String id);
 
 }
