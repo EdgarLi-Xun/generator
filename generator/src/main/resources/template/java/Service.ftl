@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 /**
 * @author ${author}
 * @date ${date}
+* ${remark}管理
 */
 public interface ${className}Service  extends IService<${className}>{
 

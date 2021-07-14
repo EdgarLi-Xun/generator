@@ -17,7 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 * @author ${author}
 * @date ${date}
 */
-@Api(tags = "${className}管理")
+@Api(tags = "${remark}管理")
 @RestController
 @RequestMapping("/api/${changeClassName}")
 public class ${className}Controller {

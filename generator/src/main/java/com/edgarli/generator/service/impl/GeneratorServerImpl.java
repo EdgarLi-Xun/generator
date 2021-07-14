@@ -41,6 +41,11 @@ public class GeneratorServerImpl extends ServiceImpl<GeneratorMapper, Generator>
     }
 
     @Override
+    public TableInfo getByName(String name) {
+        return generatorMapper.getByName(name);
+    }
+
+    @Override
     public List<ColumnInfo> getColums(String name) {
         return generatorMapper.getColums(name);
     }
@@ -113,8 +118,9 @@ public class GeneratorServerImpl extends ServiceImpl<GeneratorMapper, Generator>
     @Override
     public void generator(List<ColumnInfo> columnInfos, String tableName) {
         Generator generator = this.getById();
+        TableInfo tableInfo = this.getByName(tableName);
         try {
-            GenUtil.generatorCode(columnInfos, generator, tableName);
+            GenUtil.generatorCode(columnInfos, generator, tableName, tableInfo);
         } catch (IOException e) {
             log.error(tableName + "生成失败" + e.getMessage());
         }

@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 /**
 * @author ${author}
 * @date ${date}
+* ${remark}管理
 */
 @Service
 public class ${className}ServiceImpl extends ServiceImpl<${className}Mapper, ${className}> implements ${className}Service {

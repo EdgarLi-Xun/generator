@@ -15,6 +15,7 @@ import java.io.Serializable;
 /**
 * @author ${author}
 * @date ${date}
+* ${remark}管理
 */
 @Data
 @Accessors(chain = true)

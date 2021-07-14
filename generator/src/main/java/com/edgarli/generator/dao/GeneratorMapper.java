@@ -31,6 +31,8 @@ public interface GeneratorMapper extends BaseMapper<Generator> {
      */
     IPage<TableInfo> queryPage(@Param("name") String name, Page<TableInfo> page);
 
+    TableInfo getByName(@Param("name") String name);
+
     /**
      * 根据表名获取当前表中的所有的列数据
      *

@@ -6,6 +6,7 @@ import cn.hutool.extra.template.*;
 import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.edgarli.generator.entity.Generator;
 import com.edgarli.generator.entity.vo.ColumnInfo;
+import com.edgarli.generator.entity.vo.TableInfo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.ObjectUtils;
 
@@ -77,13 +78,14 @@ public class GenUtil {
 
     /**
      * 生成代码
-     *
-     * @param columnInfos 表元数据
+     *  @param columnInfos 表元数据
      * @param generator   生成代码的参数配置，如包路径，作者
+     * @param tableInfo
      */
-    public static void generatorCode(List<ColumnInfo> columnInfos, Generator generator, String tableName) throws IOException {
+    public static void generatorCode(List<ColumnInfo> columnInfos, Generator generator, String tableName, TableInfo tableInfo) throws IOException {
         Map<String, Object> map = new HashMap<>();
         map.put("package", generator.getPack());
+        map.put("remark", tableInfo.getRemark());
         map.put("moduleName", generator.getModuleName());
         map.put("author", generator.getAuthor());
         map.put("date", LocalDate.now().toString());
